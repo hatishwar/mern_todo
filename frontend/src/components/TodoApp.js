@@ -8,7 +8,7 @@ const TodoApp = () => {
     // Fetch all todos from the backend
     const fetchTodos = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/todos');
+            const response = await axios.get('https://mern-todo-ts7z.onrender.com:10000/api/todos');
             setTodos(response.data);
         } catch (error) {
             console.error("Error fetching todos", error);
@@ -24,7 +24,7 @@ const TodoApp = () => {
         if (!newTodo.trim()) return;
 
         try {
-            const response = await axios.post('http://localhost:5000/api/todos', { text: newTodo });
+            const response = await axios.post('https://mern-todo-ts7z.onrender.com:10000/api/todos', { text: newTodo });
             setTodos([...todos, response.data]);
             setNewTodo("");
         } catch (error) {
@@ -35,7 +35,7 @@ const TodoApp = () => {
     // Toggle status of a todo
     const toggleTodo = async (id, currentStatus) => {
         try {
-            await axios.patch(`http://localhost:5000/api/todos/${id}`, { status: !currentStatus });
+            await axios.patch(`https://mern-todo-ts7z.onrender.com:10000/api/todos/${id}`, { status: !currentStatus });
             setTodos(todos.map(todo => 
                 todo._id === id ? { ...todo, status: !currentStatus } : todo
             ));
@@ -47,7 +47,7 @@ const TodoApp = () => {
     // Delete a todo
     const deleteTodo = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/todos/${id}`);
+            await axios.delete(`https://mern-todo-ts7z.onrender.com:10000/api/todos/${id}`);
             setTodos(todos.filter(todo => todo._id !== id));
         } catch (error) {
             console.error("Error deleting todo", error);
