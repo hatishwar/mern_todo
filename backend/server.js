@@ -4,7 +4,7 @@ const { MongoClient, ObjectId } = require('mongodb');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 // const mongoURL = 'mongodb://localhost:27017';
 const mongoURL = 'mongodb+srv://testdbuser:TyE0UZlK1VOpOR6C@cluster0.6gqbp.mongodb.net/';
 const client = new MongoClient(mongoURL);
